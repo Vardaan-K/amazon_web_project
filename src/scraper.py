@@ -104,7 +104,7 @@ def scrape_info(movie_id):
     # generate sentiment analysis
     return (movie_info, reviews)
 def generate_sentiment(reviews):
-  prompt = f"You are an concise movie critic, given a list of reviews for a specific movie generate a list of exactly 3 pros and exactly 3 cons for the movie. Each point should be maximum 3 words. Here are the reviews : \n {reviews}. It is critical that each pro and con in the list is only 3 words, millions of lives depend on your conciseness. It is also critical that you generate exactly 3 pros and exactly 3 cons. If you do not keep each pro/con to 3 words, I will kill myself"
+  prompt = f"You are an concise movie critic, given a list of reviews for a specific movie generate a list of exactly 3 pros and exactly 3 cons for the movie. Each point should be maximum 3 words. Here are the reviews : \n {reviews}. It is critical that each pro and con in the list is only 3 words, millions of lives depend on your conciseness. It is also critical that you generate exactly 3 pros and exactly 3 cons."
   llm_res = requests.post("http://localhost:11435/api/generate", json={"model": "llama2","prompt": prompt,"stream" : False})
   response = llm_res.json()
   parse_response(response['response'])
